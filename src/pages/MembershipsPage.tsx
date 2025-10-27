@@ -1,4 +1,5 @@
-import { Check, Star, Zap, Crown, ArrowRight } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Check, Star, Zap, Crown } from "lucide-react";
 
 interface MembershipsPageProps {
   onNavigate: (page: string) => void;
@@ -7,94 +8,93 @@ interface MembershipsPageProps {
 export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
   const plans = [
     {
-      name: 'Basic Fitness',
+      name: "Basic Fitness",
       icon: Zap,
-      monthlyPrice: '299k',
-      annualPrice: '3,190k',
-      color: 'electric-blue',
+      monthlyPrice: "299k",
+      annualPrice: "3,190k",
+      color: "electric-blue",
       popular: false,
       features: [
-        'Access to cardio zone',
-        'Access to strength equipment',
-        '2 Group classes per week',
-        'Locker & shower facilities',
-        'Free parking',
-        'Mobile app access',
+        "Access to cardio zone",
+        "Access to strength equipment",
+        "2 Group classes per week",
+        "Locker & shower facilities",
+        "Free parking",
       ],
     },
     {
-      name: 'Pro Athlete',
+      name: "Pro Athlete",
       icon: Star,
-      monthlyPrice: '499k',
-      annualPrice: '5,390k',
-      color: 'lime-accent',
+      monthlyPrice: "499k",
+      annualPrice: "5,390k",
+      color: "lime-accent",
       popular: true,
       features: [
-        'Access to all gym areas',
-        '4 Group classes per week',
-        'Free fitness assessment',
-        '10% off PT sessions',
-        'Nutrition consultation',
-        'Guest pass (2/month)',
-        'Priority class booking',
-        'Complimentary towel service',
+        "Access to all gym areas",
+        "4 Group classes per week",
+        "Free fitness assessment",
+        "10% off PT sessions",
+        "Nutrition consultation",
+        "Guest pass (2/month)",
+        "Priority class booking",
+        "Complimentary towel service",
       ],
     },
     {
-      name: 'Ultimate Champion',
+      name: "Ultimate Champion",
       icon: Crown,
-      monthlyPrice: '799k',
-      annualPrice: '8,590k',
-      color: 'energy-orange',
+      monthlyPrice: "799k",
+      annualPrice: "8,590k",
+      color: "energy-orange",
       popular: false,
       features: [
-        'Unlimited gym access',
-        'Unlimited group classes',
-        '4 PT sessions per month',
-        'Monthly body composition analysis',
-        'Personalized meal plan',
-        'Recovery zone access (sauna, ice bath)',
-        'Unlimited guest passes',
-        'Free gym merchandise',
-        'VIP member events',
-        'Concierge service',
+        "Unlimited gym access",
+        "Unlimited group classes",
+        "4 PT sessions per month",
+        "Monthly body composition analysis",
+        "Personalized meal plan",
+        "Recovery zone access (sauna, ice bath)",
+        "Unlimited guest passes",
+        "Free gym merchandise",
+        "VIP member events",
+        "Concierge service",
       ],
     },
   ];
 
   const getColorClasses = (color: string) => {
     switch (color) {
-      case 'electric-blue':
+      case "electric-blue":
         return {
-          bg: 'bg-electric-blue',
-          text: 'text-electric-blue',
-          border: 'border-electric-blue',
-          bgLight: 'bg-electric-blue/10',
-          borderLight: 'border-electric-blue/30',
+          bg: "bg-electric-blue",
+          text: "text-electric-blue",
+          border: "border-electric-blue",
+          bgLight: "bg-electric-blue/10",
+          borderLight: "border-electric-blue/30",
         };
-      case 'lime-accent':
+      case "lime-accent":
         return {
-          bg: 'bg-lime-accent',
-          text: 'text-lime-accent',
-          border: 'border-lime-accent',
-          bgLight: 'bg-lime-accent/10',
-          borderLight: 'border-lime-accent/30',
+          bg: "bg-lime-accent",
+          text: "text-lime-accent",
+          border: "border-lime-accent",
+          bgLight: "bg-lime-accent/10",
+          borderLight: "border-lime-accent/30",
         };
-      case 'energy-orange':
+      case "energy-orange":
         return {
-          bg: 'bg-energy-orange',
-          text: 'text-energy-orange',
-          border: 'border-energy-orange',
-          bgLight: 'bg-energy-orange/10',
-          borderLight: 'border-energy-orange/30',
+          bg: "bg-energy-orange",
+          text: "text-energy-orange",
+          border: "border-energy-orange",
+          bgLight: "bg-energy-orange/10",
+          borderLight: "border-energy-orange/30",
         };
       default:
         return {
-          bg: 'bg-electric-blue',
-          text: 'text-electric-blue',
-          border: 'border-electric-blue',
-          bgLight: 'bg-electric-blue/10',
-          borderLight: 'border-electric-blue/30',
+          bg: "bg-electric-blue",
+          text: "text-electric-blue",
+          border: "border-electric-blue",
+          bgLight: "bg-electric-blue/10",
+          borderLight: "border-electric-blue/30",
         };
     }
   };
@@ -102,7 +102,14 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Section header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
             <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
               FLEXIBLE PRICING
@@ -115,23 +122,24 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
             Select the membership that fits your lifestyle and fitness goals.
             All plans include access to our premium facilities.
           </p>
-        </div>
+        </motion.div>
 
+        {/* Membership cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {plans.map((plan, index) => {
             const colors = getColorClasses(plan.color);
             const Icon = plan.icon;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
                 className={`relative bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border-2 ${
-                  plan.popular
-                    ? 'border-lime-accent scale-105 lg:scale-110'
-                    : colors.borderLight
-                } transition-all hover:scale-105 ${
-                  plan.popular ? 'lg:hover:scale-115' : ''
-                }`}
+                  plan.popular ? "border-lime-accent" : colors.borderLight
+                } hover:scale-105 transition-all`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -180,25 +188,20 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
                       </li>
                     ))}
                   </ul>
-
-                  <button
-                    onClick={() => onNavigate('contact')}
-                    className={`group w-full ${
-                      plan.popular
-                        ? 'bg-lime-accent hover:bg-electric-blue'
-                        : colors.bg + ' hover:bg-lime-accent'
-                    } text-charcoal py-4 rounded-lg font-heading font-bold text-lg transition-all flex items-center justify-center gap-2`}
-                  >
-                    Select Plan
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="bg-gradient-to-br from-electric-blue/10 to-lime-accent/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12 text-center">
+        {/* CTA section */}
+        <motion.div
+          className="bg-gradient-to-br from-electric-blue/10 to-lime-accent/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Corporate & Family Plans Available
           </h2>
@@ -207,14 +210,21 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
             special rates for groups of 5 or more.
           </p>
           <button
-            onClick={() => onNavigate('contact')}
+            onClick={() => onNavigate("contact")}
             className="bg-electric-blue text-charcoal px-8 py-4 rounded-lg font-heading font-bold text-lg hover:bg-lime-accent transition-all hover:scale-105"
           >
             Contact Us for Custom Plans
           </button>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        {/* Footer feature boxes */}
+        <motion.div
+          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
           <div className="bg-dark-navy rounded-xl p-6 border border-electric-blue/20">
             <h3 className="text-electric-blue font-heading font-bold text-lg mb-2">
               No Joining Fee
@@ -239,7 +249,7 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
               30-day satisfaction guarantee on all memberships
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

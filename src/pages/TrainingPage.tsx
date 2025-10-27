@@ -1,113 +1,87 @@
-import { useState } from 'react';
-import {
-  Target,
-  TrendingUp,
-  Shield,
-  Award,
-  User,
-  Mail,
-  Phone,
-  MessageSquare,
-  ArrowRight,
-} from 'lucide-react';
+import { motion } from "framer-motion";
+import { Target, TrendingUp, Shield, Award } from "lucide-react";
+import sarahPhoto from "../assets/images/person-2.jpg";
+import madePhoto from "../assets/images/person.jpg";
+import jessicaPhoto from "../assets/images/person-4.jpg";
+import tomPhoto from "../assets/images/person-3.jpg";
+import alexPhoto from "../assets/images/person-5.jpg";
 
 export default function TrainingPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    goals: '',
-    message: '',
-  });
-
   const trainers = [
     {
-      name: 'Sarah Chen',
-      specialty: 'HIIT & Functional Training',
-      experience: '8 years',
-      certifications: 'NASM-CPT, CrossFit L2',
+      name: "Sarah Chen",
+      specialty: "HIIT & Functional Training",
+      experience: "8 years",
+      certifications: "NASM-CPT, CrossFit L2",
+      photo: sarahPhoto,
     },
     {
-      name: 'Made Surya',
-      specialty: 'Yoga & Flexibility',
-      experience: '10 years',
-      certifications: 'RYT-500, Ashtanga Certified',
+      name: "Made Surya",
+      specialty: "Yoga & Flexibility",
+      experience: "10 years",
+      certifications: "RYT-500, Ashtanga Certified",
+      photo: madePhoto,
     },
     {
-      name: 'Jessica Lee',
-      specialty: 'Strength & Bodybuilding',
-      experience: '6 years',
-      certifications: 'ISSA-CPT, Sports Nutrition',
+      name: "Jessica Lee",
+      specialty: "Strength & Bodybuilding",
+      experience: "6 years",
+      certifications: "ISSA-CPT, Sports Nutrition",
+      photo: jessicaPhoto,
     },
     {
-      name: 'Tom Harrison',
-      specialty: 'Boxing & Combat Sports',
-      experience: '12 years',
-      certifications: 'USA Boxing Coach, NASM-CPT',
+      name: "Tom Harrison",
+      specialty: "Boxing & Combat Sports",
+      experience: "12 years",
+      certifications: "USA Boxing Coach, NASM-CPT",
+      photo: tomPhoto,
     },
     {
-      name: 'Alex Rodriguez',
-      specialty: 'Endurance & Cycling',
-      experience: '7 years',
-      certifications: 'Spinning Certified, ACSM-CPT',
+      name: "Alex Rodriguez",
+      specialty: "Endurance & Cycling",
+      experience: "7 years",
+      certifications: "Spinning Certified, ACSM-CPT",
+      photo: alexPhoto,
     },
   ];
 
   const benefits = [
     {
       icon: Target,
-      title: 'Personalized Programs',
+      title: "Personalized Programs",
       description:
-        'Custom workout plans tailored to your specific goals and fitness level',
+        "Custom workout plans tailored to your specific goals and fitness level",
     },
     {
       icon: TrendingUp,
-      title: 'Track Your Progress',
+      title: "Track Your Progress",
       description:
-        'Regular assessments and adjustments to ensure continuous improvement',
+        "Regular assessments and adjustments to ensure continuous improvement",
     },
     {
       icon: Shield,
-      title: 'Injury Prevention',
+      title: "Injury Prevention",
       description:
-        'Proper form and technique guidance to keep you safe and injury-free',
+        "Proper form and technique guidance to keep you safe and injury-free",
     },
     {
       icon: Award,
-      title: 'Expert Guidance',
+      title: "Expert Guidance",
       description:
-        'Work with certified professionals who are invested in your success',
+        "Work with certified professionals who are invested in your success",
     },
   ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you within 24 hours.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      goals: '',
-      message: '',
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="inline-block mb-4 px-4 py-2 bg-energy-orange/10 border border-energy-orange/30 rounded-full">
             <span className="text-energy-orange font-heading font-bold text-sm tracking-wider">
               1-ON-1 COACHING
@@ -120,14 +94,26 @@ export default function TrainingPage() {
             Transform your fitness with personalized attention from our expert
             trainers
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {/* Benefits with animation */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.15 }}
+        >
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-energy-orange/20 p-6 hover:scale-105 transition-all"
               >
                 <div className="bg-energy-orange/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
@@ -139,26 +125,39 @@ export default function TrainingPage() {
                 <p className="text-gray-300 font-body text-sm leading-relaxed">
                   {benefit.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
-        <div className="mb-20">
+        {/* Trainers section */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Meet Our Expert Trainers
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trainers.map((trainer, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden hover:scale-105 transition-all"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden transition-all"
               >
-                <div className="aspect-square bg-gradient-to-br from-electric-blue/20 to-lime-accent/20 flex items-center justify-center border-b border-electric-blue/20">
-                  <User className="w-24 h-24 text-electric-blue" />
-                  <p className="absolute bottom-4 text-gray-500 font-body text-xs italic text-center px-4">
-                    [Placeholder: Professional trainer photo]
-                  </p>
+                <div className="aspect-square relative border-b border-electric-blue/20 overflow-hidden">
+                  <img
+                    src={trainer.photo}
+                    alt={trainer.name}
+                    className="object-cover object-top w-full h-full transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-heading font-bold text-white mb-2">
@@ -171,231 +170,106 @@ export default function TrainingPage() {
                     <p>
                       <span className="text-gray-300 font-semibold">
                         Experience:
-                      </span>{' '}
+                      </span>{" "}
                       {trainer.experience}
                     </p>
                     <p>
                       <span className="text-gray-300 font-semibold">
                         Certified:
-                      </span>{' '}
+                      </span>{" "}
                       {trainer.certifications}
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        {/* Why Choose Section */}
+        <motion.div
+          className="grid grid-cols-1 items-start"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <div className="bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border border-energy-orange/20 p-8">
             <h2 className="text-3xl font-heading font-bold text-white mb-6">
               Why Choose Personal Training?
             </h2>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
-                  Achieve Results Faster
-                </h3>
-                <p className="text-gray-300 font-body leading-relaxed">
-                  With one-on-one attention and a customized program, you'll
-                  reach your fitness goals more efficiently than working out
-                  alone.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
-                  Stay Motivated & Accountable
-                </h3>
-                <p className="text-gray-300 font-body leading-relaxed">
-                  Your trainer will keep you on track, push you when needed, and
-                  celebrate your victories along the way.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
-                  Learn Proper Technique
-                </h3>
-                <p className="text-gray-300 font-body leading-relaxed">
-                  Master the fundamentals and advanced techniques to maximize
-                  your workouts and minimize injury risk.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
-                  Flexible & Personalized
-                </h3>
-                <p className="text-gray-300 font-body leading-relaxed">
-                  Whether you're training for a specific event, recovering from
-                  an injury, or just getting started, we'll create a plan that
-                  works for you.
-                </p>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: "Achieve Results Faster",
+                  text: "With one-on-one attention and a customized program, you'll reach your fitness goals more efficiently than working out alone.",
+                },
+                {
+                  title: "Stay Motivated & Accountable",
+                  text: "Your trainer will keep you on track, push you when needed, and celebrate your victories along the way.",
+                },
+                {
+                  title: "Learn Proper Technique",
+                  text: "Master the fundamentals and advanced techniques to maximize your workouts and minimize injury risk.",
+                },
+                {
+                  title: "Flexible & Personalized",
+                  text: "Whether you're training for a specific event, recovering from an injury, or just getting started, we'll create a plan that works for you.",
+                },
+              ].map((reason, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.15 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
+                    {reason.title}
+                  </h3>
+                  <p className="text-gray-300 font-body leading-relaxed">
+                    {reason.text}
+                  </p>
+                </motion.div>
+              ))}
             </div>
 
-            <div className="mt-8 bg-energy-orange/10 border border-energy-orange/30 rounded-xl p-6">
+            <motion.div
+              className="mt-8 bg-energy-orange/10 border border-energy-orange/30 rounded-xl p-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-xl font-heading font-bold text-white mb-4">
                 PT Pricing
               </h3>
-              <ul className="space-y-3 text-gray-300 font-body">
-                <li className="flex justify-between">
+              <ul className="text-gray-300 font-body divide-y divide-energy-orange/30">
+                <li className="flex justify-between py-2">
                   <span>Single Session</span>
-                  <span className="text-energy-orange font-bold">
-                    500k IDR
-                  </span>
+                  <span className="text-energy-orange font-bold">500k IDR</span>
                 </li>
-                <li className="flex justify-between">
+                <li className="flex justify-between py-2">
                   <span>5 Session Package</span>
                   <span className="text-energy-orange font-bold">
                     2,250k IDR
                   </span>
                 </li>
-                <li className="flex justify-between">
+                <li className="flex justify-between py-2">
                   <span>10 Session Package</span>
                   <span className="text-energy-orange font-bold">
                     4,200k IDR
                   </span>
                 </li>
+                <li>
+                  <p className="text-sm text-gray-400 mt-4 italic">
+                    Members receive 10% off all PT packages
+                  </p>
+                </li>
               </ul>
-              <p className="text-sm text-gray-400 mt-4 italic">
-                Members receive 10% off all PT packages
-              </p>
-            </div>
+            </motion.div>
           </div>
-
-          <div className="bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border border-electric-blue/20 p-8">
-            <h2 className="text-3xl font-heading font-bold text-white mb-2">
-              Start Your PT Journey
-            </h2>
-            <p className="text-gray-300 font-body mb-6">
-              Fill out the form below and we'll match you with the perfect
-              trainer for your goals
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-white font-body font-semibold mb-2"
-                >
-                  Full Name
-                </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full bg-charcoal border border-electric-blue/30 rounded-lg pl-11 pr-4 py-3 text-white font-body focus:outline-none focus:border-electric-blue transition-colors"
-                    placeholder="Your name"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-white font-body font-semibold mb-2"
-                >
-                  Email
-                </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full bg-charcoal border border-electric-blue/30 rounded-lg pl-11 pr-4 py-3 text-white font-body focus:outline-none focus:border-electric-blue transition-colors"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-white font-body font-semibold mb-2"
-                >
-                  Phone Number
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full bg-charcoal border border-electric-blue/30 rounded-lg pl-11 pr-4 py-3 text-white font-body focus:outline-none focus:border-electric-blue transition-colors"
-                    placeholder="+62 XXX XXXX XXXX"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="goals"
-                  className="block text-white font-body font-semibold mb-2"
-                >
-                  Fitness Goals
-                </label>
-                <select
-                  id="goals"
-                  name="goals"
-                  required
-                  value={formData.goals}
-                  onChange={handleChange}
-                  className="w-full bg-charcoal border border-electric-blue/30 rounded-lg px-4 py-3 text-white font-body focus:outline-none focus:border-electric-blue transition-colors"
-                >
-                  <option value="">Select your primary goal</option>
-                  <option value="weight-loss">Weight Loss</option>
-                  <option value="muscle-gain">Build Muscle</option>
-                  <option value="strength">Increase Strength</option>
-                  <option value="endurance">Improve Endurance</option>
-                  <option value="flexibility">Flexibility & Mobility</option>
-                  <option value="sports">Sports Performance</option>
-                  <option value="general">General Fitness</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-white font-body font-semibold mb-2"
-                >
-                  Additional Information
-                </label>
-                <div className="relative">
-                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full bg-charcoal border border-electric-blue/30 rounded-lg pl-11 pr-4 py-3 text-white font-body focus:outline-none focus:border-electric-blue transition-colors resize-none"
-                    placeholder="Tell us about your fitness background, any injuries, or special requirements..."
-                  ></textarea>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="group w-full bg-electric-blue text-charcoal py-4 rounded-lg font-heading font-bold text-lg hover:bg-lime-accent transition-all hover:scale-105 flex items-center justify-center gap-2"
-              >
-                Request PT Consultation
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

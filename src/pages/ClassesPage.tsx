@@ -7,180 +7,177 @@ import {
   Clock,
   Calendar,
   ArrowRight,
-} from 'lucide-react';
+} from "lucide-react";
+import { motion } from "framer-motion";
 
-interface ClassesPageProps {
-  onNavigate: (page: string) => void;
-}
-
-export default function ClassesPage({ onNavigate }: ClassesPageProps) {
+export default function ClassesPage() {
   const classes = [
     {
       icon: Flame,
-      name: 'HIIT',
+      name: "HIIT",
       description:
-        'High-intensity interval training for maximum calorie burn and cardiovascular fitness',
-      duration: '45 min',
-      intensity: 'High',
-      color: 'energy-orange',
+        "High-intensity interval training for maximum calorie burn and cardiovascular fitness",
+      duration: "45 min",
+      intensity: "High",
+      color: "energy-orange",
     },
     {
       icon: Heart,
-      name: 'Yoga',
+      name: "Yoga",
       description:
-        'Build flexibility, balance, and inner peace with our guided yoga sessions',
-      duration: '60 min',
-      intensity: 'Low-Medium',
-      color: 'lime-accent',
+        "Build flexibility, balance, and inner peace with our guided yoga sessions",
+      duration: "60 min",
+      intensity: "Low-Medium",
+      color: "lime-accent",
     },
     {
       icon: Dumbbell,
-      name: 'Strength & Conditioning',
+      name: "Strength & Conditioning",
       description:
-        'Build muscle and power through progressive resistance training',
-      duration: '60 min',
-      intensity: 'Medium-High',
-      color: 'electric-blue',
+        "Build muscle and power through progressive resistance training",
+      duration: "60 min",
+      intensity: "Medium-High",
+      color: "electric-blue",
     },
     {
       icon: Box,
-      name: 'Boxing',
+      name: "Boxing",
       description:
-        'Learn proper boxing technique while getting an incredible full-body workout',
-      duration: '50 min',
-      intensity: 'High',
-      color: 'energy-orange',
+        "Learn proper boxing technique while getting an incredible full-body workout",
+      duration: "50 min",
+      intensity: "High",
+      color: "energy-orange",
     },
     {
       icon: Bike,
-      name: 'Spin',
+      name: "Spin",
       description:
-        'Indoor cycling classes that will push your limits and burn serious calories',
-      duration: '45 min',
-      intensity: 'High',
-      color: 'electric-blue',
+        "Indoor cycling classes that will push your limits and burn serious calories",
+      duration: "45 min",
+      intensity: "High",
+      color: "electric-blue",
     },
   ];
 
   const schedule = [
     {
-      day: 'Monday',
+      day: "Monday",
       sessions: [
-        { time: '06:00 AM', class: 'HIIT', trainer: 'Sarah Chen' },
-        { time: '09:00 AM', class: 'Yoga', trainer: 'Made Surya' },
-        { time: '12:00 PM', class: 'Spin', trainer: 'Alex Rodriguez' },
-        { time: '06:00 PM', class: 'Boxing', trainer: 'Tom Harrison' },
+        { time: "06:00 AM", class: "HIIT", trainer: "Sarah Chen" },
+        { time: "09:00 AM", class: "Yoga", trainer: "Made Surya" },
+        { time: "12:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
+        { time: "06:00 PM", class: "Boxing", trainer: "Tom Harrison" },
         {
-          time: '07:30 PM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "07:30 PM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
       ],
     },
     {
-      day: 'Tuesday',
+      day: "Tuesday",
       sessions: [
-        { time: '06:00 AM', class: 'Spin', trainer: 'Alex Rodriguez' },
+        { time: "06:00 AM", class: "Spin", trainer: "Alex Rodriguez" },
         {
-          time: '09:00 AM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "09:00 AM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
-        { time: '12:00 PM', class: 'Yoga', trainer: 'Made Surya' },
-        { time: '06:00 PM', class: 'HIIT', trainer: 'Sarah Chen' },
-        { time: '07:30 PM', class: 'Boxing', trainer: 'Tom Harrison' },
+        { time: "12:00 PM", class: "Yoga", trainer: "Made Surya" },
+        { time: "06:00 PM", class: "HIIT", trainer: "Sarah Chen" },
+        { time: "07:30 PM", class: "Boxing", trainer: "Tom Harrison" },
       ],
     },
     {
-      day: 'Wednesday',
+      day: "Wednesday",
       sessions: [
-        { time: '06:00 AM', class: 'Boxing', trainer: 'Tom Harrison' },
-        { time: '09:00 AM', class: 'Yoga', trainer: 'Made Surya' },
-        { time: '12:00 PM', class: 'HIIT', trainer: 'Sarah Chen' },
+        { time: "06:00 AM", class: "Boxing", trainer: "Tom Harrison" },
+        { time: "09:00 AM", class: "Yoga", trainer: "Made Surya" },
+        { time: "12:00 PM", class: "HIIT", trainer: "Sarah Chen" },
         {
-          time: '06:00 PM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "06:00 PM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
-        { time: '07:30 PM', class: 'Spin', trainer: 'Alex Rodriguez' },
+        { time: "07:30 PM", class: "Spin", trainer: "Alex Rodriguez" },
       ],
     },
     {
-      day: 'Thursday',
+      day: "Thursday",
       sessions: [
         {
-          time: '06:00 AM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "06:00 AM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
-        { time: '09:00 AM', class: 'Boxing', trainer: 'Tom Harrison' },
-        { time: '12:00 PM', class: 'Spin', trainer: 'Alex Rodriguez' },
-        { time: '06:00 PM', class: 'Yoga', trainer: 'Made Surya' },
-        { time: '07:30 PM', class: 'HIIT', trainer: 'Sarah Chen' },
+        { time: "09:00 AM", class: "Boxing", trainer: "Tom Harrison" },
+        { time: "12:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
+        { time: "06:00 PM", class: "Yoga", trainer: "Made Surya" },
+        { time: "07:30 PM", class: "HIIT", trainer: "Sarah Chen" },
       ],
     },
     {
-      day: 'Friday',
+      day: "Friday",
       sessions: [
-        { time: '06:00 AM', class: 'HIIT', trainer: 'Sarah Chen' },
-        { time: '09:00 AM', class: 'Spin', trainer: 'Alex Rodriguez' },
-        { time: '12:00 PM', class: 'Boxing', trainer: 'Tom Harrison' },
-        { time: '06:00 PM', class: 'Yoga', trainer: 'Made Surya' },
+        { time: "06:00 AM", class: "HIIT", trainer: "Sarah Chen" },
+        { time: "09:00 AM", class: "Spin", trainer: "Alex Rodriguez" },
+        { time: "12:00 PM", class: "Boxing", trainer: "Tom Harrison" },
+        { time: "06:00 PM", class: "Yoga", trainer: "Made Surya" },
         {
-          time: '07:30 PM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "07:30 PM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
       ],
     },
     {
-      day: 'Saturday',
+      day: "Saturday",
       sessions: [
-        { time: '08:00 AM', class: 'Yoga', trainer: 'Made Surya' },
-        { time: '10:00 AM', class: 'HIIT', trainer: 'Sarah Chen' },
-        { time: '12:00 PM', class: 'Boxing', trainer: 'Tom Harrison' },
-        { time: '02:00 PM', class: 'Spin', trainer: 'Alex Rodriguez' },
+        { time: "08:00 AM", class: "Yoga", trainer: "Made Surya" },
+        { time: "10:00 AM", class: "HIIT", trainer: "Sarah Chen" },
+        { time: "12:00 PM", class: "Boxing", trainer: "Tom Harrison" },
+        { time: "02:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
       ],
     },
     {
-      day: 'Sunday',
+      day: "Sunday",
       sessions: [
-        { time: '08:00 AM', class: 'Yoga', trainer: 'Made Surya' },
+        { time: "08:00 AM", class: "Yoga", trainer: "Made Surya" },
         {
-          time: '10:00 AM',
-          class: 'Strength & Conditioning',
-          trainer: 'Jessica Lee',
+          time: "10:00 AM",
+          class: "Strength & Conditioning",
+          trainer: "Jessica Lee",
         },
-        { time: '12:00 PM', class: 'HIIT', trainer: 'Sarah Chen' },
+        { time: "12:00 PM", class: "HIIT", trainer: "Sarah Chen" },
       ],
     },
   ];
 
   const getColorClasses = (color: string) => {
     switch (color) {
-      case 'electric-blue':
+      case "electric-blue":
         return {
-          text: 'text-electric-blue',
-          bg: 'bg-electric-blue/10',
-          border: 'border-electric-blue/30',
+          text: "text-electric-blue",
+          bg: "bg-electric-blue/10",
+          border: "border-electric-blue/30",
         };
-      case 'lime-accent':
+      case "lime-accent":
         return {
-          text: 'text-lime-accent',
-          bg: 'bg-lime-accent/10',
-          border: 'border-lime-accent/30',
+          text: "text-lime-accent",
+          bg: "bg-lime-accent/10",
+          border: "border-lime-accent/30",
         };
-      case 'energy-orange':
+      case "energy-orange":
         return {
-          text: 'text-energy-orange',
-          bg: 'bg-energy-orange/10',
-          border: 'border-energy-orange/30',
+          text: "text-energy-orange",
+          bg: "bg-energy-orange/10",
+          border: "border-energy-orange/30",
         };
       default:
         return {
-          text: 'text-electric-blue',
-          bg: 'bg-electric-blue/10',
-          border: 'border-electric-blue/30',
+          text: "text-electric-blue",
+          bg: "bg-electric-blue/10",
+          border: "border-electric-blue/30",
         };
     }
   };
@@ -188,7 +185,13 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
             <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
               GROUP FITNESS
@@ -201,9 +204,16 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
             Join our expert-led classes designed to challenge, motivate, and
             transform your fitness journey
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mb-20">
+        {/* Class Offerings */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Our Class Offerings
           </h2>
@@ -213,14 +223,27 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
               const Icon = classItem.icon;
 
               return (
-                <div
+                <motion.div
                   key={index}
                   className={`bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border ${colors.border} p-6 hover:scale-105 transition-all`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  viewport={{ once: true }}
                 >
-                  <div className={`${colors.bg} w-14 h-14 rounded-lg flex items-center justify-center mb-4`}>
+                  <div
+                    className={`${colors.bg} w-14 h-14 rounded-lg flex items-center justify-center mb-4`}
+                  >
                     <Icon className={`w-7 h-7 ${colors.text}`} />
                   </div>
-                  <h3 className={`text-2xl font-heading font-bold ${colors.text} mb-3`}>
+                  <h3
+                    className={`text-2xl font-heading font-bold ${colors.text} mb-3`}
+                  >
                     {classItem.name}
                   </h3>
                   <p className="text-gray-300 font-body text-sm leading-relaxed mb-4">
@@ -235,13 +258,20 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
                       {classItem.intensity}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mb-16">
+        {/* Schedule */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Weekly Schedule
           </h2>
@@ -295,9 +325,16 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
               </table>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="bg-gradient-to-br from-lime-accent/10 to-electric-blue/10 border border-lime-accent/30 rounded-2xl p-8 md:p-12 text-center">
+        {/* CTA */}
+        <motion.div
+          className="bg-gradient-to-br from-lime-accent/10 to-electric-blue/10 border border-lime-accent/30 rounded-2xl p-8 md:p-12 text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, type: "spring" }}
+          viewport={{ once: true }}
+        >
           <Calendar className="w-16 h-16 text-lime-accent mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Ready to Sweat?
@@ -306,14 +343,16 @@ export default function ClassesPage({ onNavigate }: ClassesPageProps) {
             Book your first class now and experience the energy of group
             training at Bali Strength & Flow
           </p>
-          <button
-            onClick={() => onNavigate('contact')}
+          <a
+            href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20joining%20a%20class.%20Please%20provide%20more%20information."
+            target="_blank"
+            rel="noopener noreferrer"
             className="group bg-lime-accent text-charcoal px-8 py-4 rounded-lg font-heading font-bold text-lg hover:bg-electric-blue transition-all hover:scale-105 inline-flex items-center gap-2"
           >
             Book Your First Class Now
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
+          </a>
+        </motion.div>
       </div>
     </div>
   );
