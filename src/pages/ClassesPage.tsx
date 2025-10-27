@@ -8,7 +8,6 @@ import {
   Calendar,
   ArrowRight,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function ClassesPage() {
   const classes = [
@@ -185,13 +184,8 @@ export default function ClassesPage() {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
+        {/* Header - Only section with animation */}
+        <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
             <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
               GROUP FITNESS
@@ -204,16 +198,10 @@ export default function ClassesPage() {
             Join our expert-led classes designed to challenge, motivate, and
             transform your fitness journey
           </p>
-        </motion.div>
+        </div>
 
-        {/* Class Offerings */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
+        {/* Class Offerings - No animation */}
+        <div className="mb-20">
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Our Class Offerings
           </h2>
@@ -223,18 +211,9 @@ export default function ClassesPage() {
               const Icon = classItem.icon;
 
               return (
-                <motion.div
+                <div
                   key={index}
-                  className={`bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border ${colors.border} p-6 hover:scale-105 transition-all`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                  viewport={{ once: true }}
+                  className={`bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border ${colors.border} p-6 hover:scale-105 transition-all duration-300`}
                 >
                   <div
                     className={`${colors.bg} w-14 h-14 rounded-lg flex items-center justify-center mb-4`}
@@ -258,20 +237,14 @@ export default function ClassesPage() {
                       {classItem.intensity}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Schedule */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        {/* Schedule - No animation */}
+        <div className="mb-16">
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Weekly Schedule
           </h2>
@@ -325,16 +298,10 @@ export default function ClassesPage() {
               </table>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* CTA */}
-        <motion.div
-          className="bg-gradient-to-br from-lime-accent/10 to-electric-blue/10 border border-lime-accent/30 rounded-2xl p-8 md:p-12 text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, type: "spring" }}
-          viewport={{ once: true }}
-        >
+        {/* CTA - No animation */}
+        <div className="bg-gradient-to-br from-lime-accent/10 to-electric-blue/10 border border-lime-accent/30 rounded-2xl p-8 md:p-12 text-center">
           <Calendar className="w-16 h-16 text-lime-accent mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Ready to Sweat?
@@ -352,7 +319,7 @@ export default function ClassesPage() {
             Book Your First Class Now
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

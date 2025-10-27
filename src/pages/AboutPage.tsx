@@ -8,15 +8,14 @@ import {
   Wind,
   Shirt,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
-import gymInterior from "../assets/images/place-10.jpg";
-import cardioZone from "../assets/images/place-2.jpg";
-import weightsArea from "../assets/images/place-3.jpg";
-import functionalTraining from "../assets/images/place-7.jpg";
-import studioSpace from "../assets/images/place-5.jpg";
-import recoveryZone from "../assets/images/place-6.jpg";
-import lockerRoom from "../assets/images/place-4.jpg";
+import gymInterior from "../assets/images/place-10.webp";
+import cardioZone from "../assets/images/place-2.webp";
+import weightsArea from "../assets/images/place-3.webp";
+import functionalTraining from "../assets/images/place-7.webp";
+import studioSpace from "../assets/images/place-5.webp";
+import recoveryZone from "../assets/images/place-6.webp";
+import lockerRoom from "../assets/images/place-4.webp";
 
 interface AboutPageProps {
   onNavigate: (page: string) => void;
@@ -96,14 +95,8 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Intro Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        {/* Intro Section - Only section with animation */}
+        <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-lime-accent/10 border border-lime-accent/30 rounded-full">
             <span className="text-lime-accent font-heading font-bold text-sm tracking-wider">
               OUR STORY
@@ -116,16 +109,11 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             More than a gym, we're a community dedicated to helping you become
             the strongest version of yourself
           </p>
-        </motion.div>
+        </div>
 
-        {/* Mission Section */}
+        {/* Mission Section - No animation */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Our Mission
             </h2>
@@ -152,42 +140,27 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                 us and discover what you're truly capable of.
               </p>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
+            <button
               onClick={() => onNavigate("contact")}
-              className="mt-8 bg-lime-accent text-charcoal px-8 py-4 rounded-lg font-heading font-bold text-lg hover:bg-electric-blue transition-all"
+              className="mt-8 bg-lime-accent text-charcoal px-8 py-4 rounded-lg font-heading font-bold text-lg hover:bg-electric-blue transition-all hover:scale-105"
             >
               Visit Us Today
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <div className="relative">
             <div className="aspect-[4/3] overflow-hidden rounded-2xl border-2 border-lime-accent/30">
               <img
                 src={gymInterior}
                 alt="Bali Strength & Flow Gym Interior"
-                className="object-cover object-center w-full h-full hover:scale-110 transition-transform duration-500"
-                loading="lazy"
+                className="object-cover object-center w-full h-full"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Values Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.15 }}
-          className="mb-20"
-        >
+        {/* Values Section - No animation */}
+        <div className="mb-20">
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Our Values
           </h2>
@@ -195,14 +168,9 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <motion.div
+                <div
                   key={index}
-                  variants={{
-                    hidden: { opacity: 0, y: 40 },
-                    visible: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-lime-accent/20 p-6 text-center hover:scale-105 transition-all"
+                  className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-lime-accent/20 p-6 text-center hover:scale-105 transition-all duration-300"
                 >
                   <div className="bg-lime-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-lime-accent" />
@@ -213,39 +181,28 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                   <p className="text-gray-300 font-body text-sm leading-relaxed">
                     {value.description}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Facilities Section */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.2 }}
-        >
+        {/* Facilities Section - No animation */}
+        <div>
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Our Facilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {facilities.map((facility, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.6 }}
-                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden hover:scale-105 transition-all"
+                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden"
               >
                 <div className="aspect-video relative overflow-hidden border-b border-electric-blue/20">
                   <img
                     src={facility.photo}
                     alt={facility.name}
-                    className="object-cover object-center w-full h-full hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
+                    className="object-cover object-center w-full h-full "
                   />
                 </div>
                 <div className="p-6">
@@ -256,19 +213,13 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
                     {facility.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-br from-electric-blue/10 to-energy-orange/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12"
-        >
+        {/* Stats Section - No animation */}
+        <div className="mt-20 bg-gradient-to-br from-electric-blue/10 to-energy-orange/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="text-5xl font-heading font-bold text-electric-blue mb-2">
@@ -289,7 +240,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
               <div className="text-gray-300 font-body">Member Satisfaction</div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

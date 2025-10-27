@@ -6,20 +6,13 @@ import {
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        {/* Header - Only section with animation */}
+        <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
             <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
               GET IN TOUCH
@@ -30,18 +23,12 @@ export default function ContactPage() {
           </h1>
           <p className="text-xl text-gray-300 font-body max-w-3xl mx-auto leading-relaxed">
             Ready to start your fitness journey? Reach out to us on WhatsApp or
-            via email — we’ll respond as soon as possible.
+            via email — we'll respond as soon as possible.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Contact Options */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
+        {/* Contact Options - No animation */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
             <h2 className="text-3xl font-heading font-bold text-white mb-8">
               Talk to Us Directly
@@ -49,45 +36,35 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               {/* WhatsApp */}
-              <motion.a
+              <a
                 href="https://wa.me/6281234567890"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between bg-lime-accent text-charcoal px-6 py-5 rounded-lg font-heading font-bold text-lg transition-all hover:scale-105 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <span className="flex items-center gap-3">
                   <MessageCircle className="w-6 h-6" />
                   Chat via WhatsApp
                 </span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </a>
 
               {/* Email */}
-              <motion.a
+              <a
                 href="mailto:getfit@balistrengthflow.com"
                 className="flex items-center justify-between bg-electric-blue text-charcoal px-6 py-5 rounded-lg font-heading font-bold text-lg transition-all hover:scale-105 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <span className="flex items-center gap-3">
                   <Mail className="w-6 h-6" />
                   Send Email
                 </span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.a>
+              </a>
             </div>
           </div>
 
-          {/* Location and Info */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-          >
+          {/* Location and Info - No animation */}
+          <div className="space-y-8">
             <div className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 p-6">
               <div className="flex items-start gap-4">
                 <div className="bg-electric-blue/10 w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -153,16 +130,11 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        {/* Map Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
+        {/* Map Section - No animation */}
+        <div>
           <h2 className="text-3xl font-heading font-bold text-white mb-6 text-center">
             Find Us on the Map
           </h2>
@@ -179,7 +151,7 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

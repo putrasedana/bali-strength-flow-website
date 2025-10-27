@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Check, Star, Zap, Crown } from "lucide-react";
 
 interface MembershipsPageProps {
@@ -103,13 +102,7 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
             <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
               FLEXIBLE PRICING
@@ -122,7 +115,7 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
             Select the membership that fits your lifestyle and fitness goals.
             All plans include access to our premium facilities.
           </p>
-        </motion.div>
+        </div>
 
         {/* Membership cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -131,15 +124,11 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
             const Icon = plan.icon;
 
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
                 className={`relative bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border-2 ${
                   plan.popular ? "border-lime-accent" : colors.borderLight
-                } hover:scale-105 transition-all`}
+                } hover:scale-105 transition-all duration-300`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -189,19 +178,13 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* CTA section */}
-        <motion.div
-          className="bg-gradient-to-br from-electric-blue/10 to-lime-accent/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12 text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <div className="bg-gradient-to-br from-electric-blue/10 to-lime-accent/10 border border-electric-blue/30 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Corporate & Family Plans Available
           </h2>
@@ -215,16 +198,10 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
           >
             Contact Us for Custom Plans
           </button>
-        </motion.div>
+        </div>
 
         {/* Footer feature boxes */}
-        <motion.div
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          viewport={{ once: true }}
-        >
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="bg-dark-navy rounded-xl p-6 border border-electric-blue/20">
             <h3 className="text-electric-blue font-heading font-bold text-lg mb-2">
               No Joining Fee
@@ -249,7 +226,7 @@ export default function MembershipsPage({ onNavigate }: MembershipsPageProps) {
               30-day satisfaction guarantee on all memberships
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

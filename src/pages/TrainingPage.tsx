@@ -1,10 +1,9 @@
-import { motion } from "framer-motion";
 import { Target, TrendingUp, Shield, Award } from "lucide-react";
-import sarahPhoto from "../assets/images/person-2.jpg";
-import madePhoto from "../assets/images/person.jpg";
-import jessicaPhoto from "../assets/images/person-4.jpg";
-import tomPhoto from "../assets/images/person-3.jpg";
-import alexPhoto from "../assets/images/person-5.jpg";
+import sarahPhoto from "../assets/images/person-2.webp";
+import madePhoto from "../assets/images/person.webp";
+import jessicaPhoto from "../assets/images/person-4.webp";
+import tomPhoto from "../assets/images/person-3.webp";
+import alexPhoto from "../assets/images/person-5.webp";
 
 export default function TrainingPage() {
   const trainers = [
@@ -75,13 +74,8 @@ export default function TrainingPage() {
   return (
     <div className="min-h-screen bg-charcoal pt-28 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        {/* Header - Only section with animation */}
+        <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-energy-orange/10 border border-energy-orange/30 rounded-full">
             <span className="text-energy-orange font-heading font-bold text-sm tracking-wider">
               1-ON-1 COACHING
@@ -94,27 +88,16 @@ export default function TrainingPage() {
             Transform your fitness with personalized attention from our expert
             trainers
           </p>
-        </motion.div>
+        </div>
 
-        {/* Benefits with animation */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ staggerChildren: 0.15 }}
-        >
+        {/* Benefits - No animation */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <motion.div
+              <div
                 key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-energy-orange/20 p-6 hover:scale-105 transition-all"
+                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-energy-orange/20 p-6 hover:scale-105 transition-all duration-300"
               >
                 <div className="bg-energy-orange/10 w-14 h-14 rounded-lg flex items-center justify-center mb-4">
                   <Icon className="w-7 h-7 text-energy-orange" />
@@ -125,31 +108,21 @@ export default function TrainingPage() {
                 <p className="text-gray-300 font-body text-sm leading-relaxed">
                   {benefit.description}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
 
-        {/* Trainers section */}
-        <motion.div
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
+        {/* Trainers section - No animation */}
+        <div className="mb-20">
           <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
             Meet Our Expert Trainers
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trainers.map((trainer, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden transition-all"
+                className="bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border border-electric-blue/20 overflow-hidden transition-all duration-300"
               >
                 <div className="aspect-square relative border-b border-electric-blue/20 overflow-hidden">
                   <img
@@ -181,19 +154,13 @@ export default function TrainingPage() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Why Choose Section */}
-        <motion.div
-          className="grid grid-cols-1 items-start"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
+        {/* Why Choose Section - No animation */}
+        <div className="grid grid-cols-1 items-start">
           <div className="bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border border-energy-orange/20 p-8">
             <h2 className="text-3xl font-heading font-bold text-white mb-6">
               Why Choose Personal Training?
@@ -217,30 +184,18 @@ export default function TrainingPage() {
                   text: "Whether you're training for a specific event, recovering from an injury, or just getting started, we'll create a plan that works for you.",
                 },
               ].map((reason, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.15 }}
-                  viewport={{ once: true }}
-                >
+                <div key={idx}>
                   <h3 className="text-xl font-heading font-bold text-energy-orange mb-2">
                     {reason.title}
                   </h3>
                   <p className="text-gray-300 font-body leading-relaxed">
                     {reason.text}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            <motion.div
-              className="mt-8 bg-energy-orange/10 border border-energy-orange/30 rounded-xl p-6"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <div className="mt-8 bg-energy-orange/10 border border-energy-orange/30 rounded-xl p-6">
               <h3 className="text-xl font-heading font-bold text-white mb-4">
                 PT Pricing
               </h3>
@@ -267,9 +222,9 @@ export default function TrainingPage() {
                   </p>
                 </li>
               </ul>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
