@@ -1,158 +1,8 @@
-import {
-  Flame,
-  Heart,
-  Dumbbell,
-  Box,
-  Bike,
-  Clock,
-  Calendar,
-  ArrowRight,
-} from "lucide-react";
+import { Clock, Calendar, ArrowRight } from "lucide-react";
+import { ClassColor, classes, schedule } from "../data/classes";
 
 export default function ClassesPage() {
-  const classes = [
-    {
-      icon: Flame,
-      name: "HIIT",
-      description:
-        "High-intensity interval training for maximum calorie burn and cardiovascular fitness",
-      duration: "45 min",
-      intensity: "High",
-      color: "energy-orange",
-    },
-    {
-      icon: Heart,
-      name: "Yoga",
-      description:
-        "Build flexibility, balance, and inner peace with our guided yoga sessions",
-      duration: "60 min",
-      intensity: "Low-Medium",
-      color: "lime-accent",
-    },
-    {
-      icon: Dumbbell,
-      name: "Strength & Conditioning",
-      description:
-        "Build muscle and power through progressive resistance training",
-      duration: "60 min",
-      intensity: "Medium-High",
-      color: "electric-blue",
-    },
-    {
-      icon: Box,
-      name: "Boxing",
-      description:
-        "Learn proper boxing technique while getting an incredible full-body workout",
-      duration: "50 min",
-      intensity: "High",
-      color: "energy-orange",
-    },
-    {
-      icon: Bike,
-      name: "Spin",
-      description:
-        "Indoor cycling classes that will push your limits and burn serious calories",
-      duration: "45 min",
-      intensity: "High",
-      color: "electric-blue",
-    },
-  ];
-
-  const schedule = [
-    {
-      day: "Monday",
-      sessions: [
-        { time: "06:00 AM", class: "HIIT", trainer: "Sarah Chen" },
-        { time: "09:00 AM", class: "Yoga", trainer: "Made Surya" },
-        { time: "12:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
-        { time: "06:00 PM", class: "Boxing", trainer: "Tom Harrison" },
-        {
-          time: "07:30 PM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-      ],
-    },
-    {
-      day: "Tuesday",
-      sessions: [
-        { time: "06:00 AM", class: "Spin", trainer: "Alex Rodriguez" },
-        {
-          time: "09:00 AM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-        { time: "12:00 PM", class: "Yoga", trainer: "Made Surya" },
-        { time: "06:00 PM", class: "HIIT", trainer: "Sarah Chen" },
-        { time: "07:30 PM", class: "Boxing", trainer: "Tom Harrison" },
-      ],
-    },
-    {
-      day: "Wednesday",
-      sessions: [
-        { time: "06:00 AM", class: "Boxing", trainer: "Tom Harrison" },
-        { time: "09:00 AM", class: "Yoga", trainer: "Made Surya" },
-        { time: "12:00 PM", class: "HIIT", trainer: "Sarah Chen" },
-        {
-          time: "06:00 PM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-        { time: "07:30 PM", class: "Spin", trainer: "Alex Rodriguez" },
-      ],
-    },
-    {
-      day: "Thursday",
-      sessions: [
-        {
-          time: "06:00 AM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-        { time: "09:00 AM", class: "Boxing", trainer: "Tom Harrison" },
-        { time: "12:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
-        { time: "06:00 PM", class: "Yoga", trainer: "Made Surya" },
-        { time: "07:30 PM", class: "HIIT", trainer: "Sarah Chen" },
-      ],
-    },
-    {
-      day: "Friday",
-      sessions: [
-        { time: "06:00 AM", class: "HIIT", trainer: "Sarah Chen" },
-        { time: "09:00 AM", class: "Spin", trainer: "Alex Rodriguez" },
-        { time: "12:00 PM", class: "Boxing", trainer: "Tom Harrison" },
-        { time: "06:00 PM", class: "Yoga", trainer: "Made Surya" },
-        {
-          time: "07:30 PM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-      ],
-    },
-    {
-      day: "Saturday",
-      sessions: [
-        { time: "08:00 AM", class: "Yoga", trainer: "Made Surya" },
-        { time: "10:00 AM", class: "HIIT", trainer: "Sarah Chen" },
-        { time: "12:00 PM", class: "Boxing", trainer: "Tom Harrison" },
-        { time: "02:00 PM", class: "Spin", trainer: "Alex Rodriguez" },
-      ],
-    },
-    {
-      day: "Sunday",
-      sessions: [
-        { time: "08:00 AM", class: "Yoga", trainer: "Made Surya" },
-        {
-          time: "10:00 AM",
-          class: "Strength & Conditioning",
-          trainer: "Jessica Lee",
-        },
-        { time: "12:00 PM", class: "HIIT", trainer: "Sarah Chen" },
-      ],
-    },
-  ];
-
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color: ClassColor) => {
     switch (color) {
       case "electric-blue":
         return {
@@ -187,24 +37,17 @@ export default function ClassesPage() {
         {/* Header - Only section with animation */}
         <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-block mb-4 px-4 py-2 bg-electric-blue/10 border border-electric-blue/30 rounded-full">
-            <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">
-              GROUP FITNESS
-            </span>
+            <span className="text-electric-blue font-heading font-bold text-sm tracking-wider">GROUP FITNESS</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">
-            Classes & Schedule
-          </h1>
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-6">Classes & Schedule</h1>
           <p className="text-xl text-gray-300 font-body max-w-3xl mx-auto leading-relaxed">
-            Join our expert-led classes designed to challenge, motivate, and
-            transform your fitness journey
+            Join our expert-led classes designed to challenge, motivate, and transform your fitness journey
           </p>
         </div>
 
         {/* Class Offerings - No animation */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
-            Our Class Offerings
-          </h2>
+        <div className="mb-20 animate-fade-in-delayed">
+          <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">Our Class Offerings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {classes.map((classItem, index) => {
               const colors = getColorClasses(classItem.color);
@@ -215,27 +58,17 @@ export default function ClassesPage() {
                   key={index}
                   className={`bg-gradient-to-br from-dark-navy to-charcoal rounded-xl border ${colors.border} p-6 hover:scale-105 transition-all duration-300`}
                 >
-                  <div
-                    className={`${colors.bg} w-14 h-14 rounded-lg flex items-center justify-center mb-4`}
-                  >
+                  <div className={`${colors.bg} w-14 h-14 rounded-lg flex items-center justify-center mb-4`}>
                     <Icon className={`w-7 h-7 ${colors.text}`} />
                   </div>
-                  <h3
-                    className={`text-2xl font-heading font-bold ${colors.text} mb-3`}
-                  >
-                    {classItem.name}
-                  </h3>
-                  <p className="text-gray-300 font-body text-sm leading-relaxed mb-4">
-                    {classItem.description}
-                  </p>
+                  <h3 className={`text-2xl font-heading font-bold ${colors.text} mb-3`}>{classItem.name}</h3>
+                  <p className="text-gray-300 font-body text-sm leading-relaxed mb-4">{classItem.description}</p>
                   <div className="flex items-center gap-4 text-sm">
                     <div className="flex items-center gap-2 text-gray-400">
                       <Clock className="w-4 h-4" />
                       <span className="font-body">{classItem.duration}</span>
                     </div>
-                    <div className={`${colors.text} font-body font-semibold`}>
-                      {classItem.intensity}
-                    </div>
+                    <div className={`${colors.text} font-body font-semibold`}>{classItem.intensity}</div>
                   </div>
                 </div>
               );
@@ -244,27 +77,17 @@ export default function ClassesPage() {
         </div>
 
         {/* Schedule - No animation */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">
-            Weekly Schedule
-          </h2>
+        <div className="mb-16 animate-fade-in-delayed-2">
+          <h2 className="text-3xl font-heading font-bold text-white mb-8 text-center">Weekly Schedule</h2>
           <div className="bg-gradient-to-br from-dark-navy to-charcoal rounded-2xl border border-electric-blue/20 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="bg-electric-blue/10 border-b border-electric-blue/20">
-                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">
-                      Day
-                    </th>
-                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">
-                      Time
-                    </th>
-                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">
-                      Class
-                    </th>
-                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">
-                      Trainer
-                    </th>
+                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">Day</th>
+                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">Time</th>
+                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">Class</th>
+                    <th className="px-6 py-4 text-left font-heading font-bold text-electric-blue">Trainer</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -282,17 +105,11 @@ export default function ClassesPage() {
                             {day.day}
                           </td>
                         )}
-                        <td className="px-6 py-4 font-body text-gray-400">
-                          {session.time}
-                        </td>
-                        <td className="px-6 py-4 font-body text-white font-semibold">
-                          {session.class}
-                        </td>
-                        <td className="px-6 py-4 font-body text-gray-300">
-                          {session.trainer}
-                        </td>
+                        <td className="px-6 py-4 font-body text-gray-400">{session.time}</td>
+                        <td className="px-6 py-4 font-body text-white font-semibold">{session.class}</td>
+                        <td className="px-6 py-4 font-body text-gray-300">{session.trainer}</td>
                       </tr>
-                    ))
+                    )),
                   )}
                 </tbody>
               </table>
@@ -303,12 +120,9 @@ export default function ClassesPage() {
         {/* CTA - No animation */}
         <div className="bg-gradient-to-br from-lime-accent/10 to-electric-blue/10 border border-lime-accent/30 rounded-2xl p-8 md:p-12 text-center">
           <Calendar className="w-16 h-16 text-lime-accent mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-            Ready to Sweat?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Ready to Sweat?</h2>
           <p className="text-gray-300 font-body text-lg mb-6 max-w-2xl mx-auto">
-            Book your first class now and experience the energy of group
-            training at Bali Strength & Flow
+            Book your first class now and experience the energy of group training at Bali Strength & Flow
           </p>
           <a
             href="https://wa.me/6281234567890?text=Hi!%20I'm%20interested%20in%20joining%20a%20class.%20Please%20provide%20more%20information."
